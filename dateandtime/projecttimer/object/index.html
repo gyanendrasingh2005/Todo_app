@@ -1,2 +1,43 @@
 // object is a collection of key and pair 
 // multitple data type can be stored 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>The Random joke Genenrator</h1>
+      <section class="api_body"></section>
+    <button id="fetchJoke">Get another Joke</button>
+</div>
+<script>
+    const api_body=document.querySelector(".api_body");
+    const apiUrl="https://icanhazdad.cdom/";
+    async function fetchData()
+    {
+        try{
+            const res=await fetch(apiUrl,{
+                headers:{
+                    Accept:"application/json",
+                },
+            });
+            const data=await res.json();
+            console.log(data.joke);
+            api_body.innerHTML=data.joke;
+        }
+        catch(error)
+        {
+                api_body.innerHTML=error;
+            console.log(error);
+            
+        }
+    }
+</script>
+</body>
+</html>
+
