@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> heading to the south </h1>
+
+
+    <!-- <script> -->
+        <!-- //   const  current=new Date();
+        //   console.log(current );
+
+
+    // const datesstring=new Date(datestring);
+    // console.log(datesstring)
+
+
+    // const date2=new Date(2024,0,19,10);
+    // console.log(date2);
+
+    // const currentdate=new Date();
+    // const year=currentdate.getFullYear();
+    // console.log(year);
+
+//      const date=new Date();
+//    date.setMilliseconds(1000);
+//    console.log(date);
+
+// const date=new Date();
+// const localtimestring=date.toLocaleString();
+// console.log(localtimestring);
+
+
+
+// const datestring="2024-02-19ct16 ;30 ;00Z";
+// const parsedate=Date.parse(datestring);
+// console.log(parsedate)
+
+// const addDaysTodate=(date,nextday)=>{
+//     console.log(date);
+//     console.log(date.setDate(date.getdate+extraDay));
+//     console.log(new Date(1254698523))
+ 
+
+// };
+
+// const adddaystodate=(date,extraday)=>{
+//     let updatedDate=date.setDate(date.getDate()+extraday);
+//     return new Date(updatedDate);
+// }
+
+//  const getdiff=(d1,d2)=>{
+//       let oneday=24*60*60*1000;
+//       console.log(Math.round(abs(d1-d2)/oneday));
+
+//  };
+
+// const date1=new Date("2024-02-19");
+// const date2=new Date("2024-03-01");
+// console.log(difference(date1,date2));
+
+
+
+// TIMING BASED EVENTS -->
+
+    <!-- // <script> -->
+
+<div class="mainDiv">
+  <p id="clock"> </p>
+</div>
+
+        <script>
+
+
+const  currentTime=()=>{
+    let currenttime=new  Date().toLocaleTimeString;
+    document.getElementById("clock").innerText=currentTime;
+
+};
+currentTime();
+
+
+const intervalId=setInterval(()=>{
+    currentTime();
+},1000);
+
+setTimeout(()=>{
+    clearInterval(intervalId)
+})
+
+
+        </script>
+ 
+
+</body>
+</html>

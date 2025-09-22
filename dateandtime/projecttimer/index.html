@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       /* General page styling */
+body {
+    background-color: #b5cfe6;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Countdown display */
+#countDown {
+    background-color: beige;
+    padding: 20px 40px;
+    font-size: 2rem;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Button container */
+.buttons {
+    background-color: bisque;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* General button styles */
+.buttons button {
+    width: 120px;
+    height: 40px;
+    font-size: 1rem;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect for all buttons */
+.buttons button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Individual button colors */
+.start_btn {
+    background-color: blueviolet;
+    border-radius: 5px;
+}
+
+.reset_btn {
+    background-color: chartreuse;
+    color: #000;
+    border-radius: 5px;
+}
+
+.stop_btn {
+    background-color: brown;
+    border-radius: 5px;
+}
+
+.time_btn {
+    background-color: aquamarine;
+    color: #000;
+    border-radius: 5px;
+}
+
+.clear_btn {
+    background-color: cadetblue;
+    border-radius: 5px;
+}
+
+/* Placeholder resetvalue container */
+.resetvalue {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+
+    </style>
+
+</head>
+<body>
+    <section>
+        <p id="countDown">0 </p>
+        <div class="buttons"> 
+            <button class="start_btn">Start</button>
+            <button class="reset_btn">Reset</button>
+            <br>
+            <button class="stop_btn">Stop</button>
+            <button class="time_btn">getTime</button>
+            <br>
+            <button class="clear_btn">clearTime</button>
+
+        </div>
+        <div class="resetvalue"></div>
+    </section>
+    <script>
+   const countDownelement = document.getElementById("countDown");
+const resetvalueelement = document.querySelector(".resetvalue");
+let startcount = 0;
+let intervalId;
+
+const startTimer = () => {
+    // Check if a timer is already running to prevent multiple intervals
+    if (!intervalId) {
+        intervalId = setInterval(() => {
+            countDownelement.innerText = startcount++;
+        }, 1000);
+    }
+};
+
+const resetTimer = () => {
+    // Clear the interval and reset the counter and display
+    clearInterval(intervalId);
+    intervalId = null; // Important: Reset intervalId to allow the start button to work again
+    startcount = 0;
+    countDownelement.innerText = startcount;
+};
+
+const stopTimer = () => {
+    // Simply clear the interval to stop the counter
+    clearInterval(intervalId);
+    intervalId = null;
+};
+
+const getTime = () => {
+    const newPara = document.createElement("p");
+    newPara.innerText = `The stop time is ${startcount - 1}`;
+    resetvalueelement.append(newPara);
+};
+
+const clearTimer = () => {
+    // Clear the displayed times in the resetvalue div
+    resetvalueelement.innerHTML = '';
+};
+
+document.querySelector(".start_btn").addEventListener("click", startTimer);
+document.querySelector(".reset_btn").addEventListener("click", resetTimer); // Corrected function name
+document.querySelector(".stop_btn").addEventListener("click", stopTimer); // Corrected function name
+document.querySelector(".time_btn").addEventListener("click", getTime);
+document.querySelector(".clear_btn").addEventListener("click", clearTimer);
+
+    </script>
+</body>
+</html>

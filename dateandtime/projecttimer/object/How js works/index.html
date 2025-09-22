@@ -1,0 +1,85 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(180, 194, 206);
+            width: 100cqh;
+            height: 100cqb;
+         
+        }
+        #mylist{
+              background-color: rgb(162, 174, 183);
+            width: 20cqh;
+            height: 20cqb;
+               justify-content: center;
+        }
+
+    </style>
+</head>
+<body>
+    <p> 
+        which programming language you like the most
+    </p>
+    <br>
+    <ul id="mylist">
+        <li>React</li>
+        <li>Js</li>
+        <li>Next</li>
+        <li>Html</li>
+    </ul>
+    <p id="listvalue"> </p>
+
+    <script>
+        const getListDetails=(event)=>{
+             console.log(event.target);
+
+        };
+        document.getElementById("myList").addEventListener("click",getListDetails);
+        
+    </script>
+
+    
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title Periodic Table </title>
+</head>
+<body>
+    <h1>Event Delegation -Periodic Table</h1>
+    <section class="mainBody">
+    </section>
+    <script>
+    function initializeperiodictable(){
+     const mainbody = document.querySelector(".mainBody");
+     for(let i = 1; i <= 50; i++) {
+       const element = document.createElement("div");
+       element.innerText = i;
+       mainbody.append(element);
+     }
+     mainbody.addEventListener('click', (e) => {
+       alert(e.target.innerText);
+     });
+    }
+    initializeperiodictable();
+
+    </script>
+    
+</body>
+</html>

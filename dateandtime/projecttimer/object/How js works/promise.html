@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dad Jokes</title>
+<style>
+  
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: linear-gradient(135deg, #67c6cd 0%, #66a6ff 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    background: white;
+    padding: 2.5rem 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    color: #444;
+    text-shadow: 1px 1px 4px rgba(102, 166, 255, 0.5);
+  }
+
+  .api_body {
+    min-height: 80px;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+    padding: 0 1rem;
+  }
+
+  button#fetchJoke {
+    background: #66a6ff;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(102, 166, 255, 0.4);
+  }
+
+  button#fetchJoke:hover {
+    background-color: #4d8de0;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(77, 141, 224, 0.6);
+  }
+
+  button#fetchJoke:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(77, 141, 224, 0.4);
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Dad Jokes</h1>
+    <section class="api_body"></section>
+    <button id="fetchJoke">Get another Joke</button>
+  </div>
+
+<script>
+  const api_body = document.querySelector(".api_body");
+  const api_url = "https://icanhazdadjoke.com/";
+
+  const fetchData = () => {
+    fetch(api_url, {
+      headers: {
+        Accept: "application/json",
+      },
+    })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return res.json();
+    })
+    .then((data) => {
+      api_body.textContent = data.joke;
+      console.log(data.joke);
+    })
+    .catch((error) => {
+      api_body.textContent = "Oops! Something went wrong.";
+      console.error("Error fetching joke:", error);
+    });
+  };
+
+  document.getElementById("fetchJoke").addEventListener("click", fetchData);
+
+  // Fetch a joke on page load
+  fetchData();
+</script>
+</body>
+</html>
